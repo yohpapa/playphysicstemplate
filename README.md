@@ -35,7 +35,11 @@ You can use MainActivity in PlayPhysicsTemplate project. Of course you also crea
 	}
 ```
 
-That's all! Have a fun!
+That's all! A screenshot is here:
+
+![Screenshot](https://raw.githubusercontent.com/yohpapa/playphysicstemplate/master/PlayPhysicsTemplate/assets/screenshot.png)
+
+Let's have fun!
 
 # License
 
