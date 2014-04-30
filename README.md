@@ -13,7 +13,7 @@ Import all of the above projects to your Eclipse workspace.
 
 # Usage (How to play)
 
-You can use MainActivity in PlayPhysicsTemplate project. Of course you also create your own Activity from scratch. Then you need to extend your Activity from PlayPhysicsTemplateActivity class in the project. In all cases, all you have to do is only to override setupYourPhysicsWorld method. For example:
+You can use MainActivity in PlayPhysicsTemplate project. Of course you can also create your own Activity from scratch. Then you need to extend your Activity from PlayPhysicsTemplateActivity class in the project. In all cases, all you have to do is only to override and implement setupYourPhysicsWorld method. For example:
 
 ```java
 	@Override
@@ -37,7 +37,7 @@ You can use MainActivity in PlayPhysicsTemplate project. Of course you also crea
 
 That's all! A screenshot is here:
 
-![Screenshot](https://raw.githubusercontent.com/yohpapa/playphysicstemplate/master/PlayPhysicsTemplate/assets/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/yohpapa/playphysicstemplate/master/screenshot.png)
 
 Let's have fun!
 

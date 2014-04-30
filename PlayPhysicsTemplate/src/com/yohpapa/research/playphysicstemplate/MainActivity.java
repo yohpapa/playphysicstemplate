@@ -38,10 +38,22 @@ public class MainActivity extends PlayPhysicsTemplateActivity {
 		PhysicsFactory.createLineBody(world, WIDTH - 2, HEIGHT - 2, 2, HEIGHT - 2, def);
 		
 		// Boxes
-		PhysicsFactory.createBoxBody(world, WIDTH / 2, HEIGHT * 2 / 3, 50, 50, BodyType.DynamicBody, def);
+		for(int i = 0; i < 10; i ++) {
+			PhysicsFactory.createBoxBody(
+								world,
+								WIDTH / 2 + getRandomNumber() * i, HEIGHT * 2 / 3, 50, 50,
+								BodyType.DynamicBody,
+								def);
+		}
 		
 		// Balls
-		PhysicsFactory.createCircleBody(world, WIDTH / 2 + getRandomNumber(), HEIGHT / 3, 25, BodyType.DynamicBody, def);
+		for(int i = 0; i < 10; i ++) {
+			PhysicsFactory.createCircleBody(
+								world,
+								WIDTH / 2 + getRandomNumber() * i, HEIGHT / 3, 25,
+								BodyType.DynamicBody,
+								def);
+		}
 	}
 	
 	private int getRandomNumber() {

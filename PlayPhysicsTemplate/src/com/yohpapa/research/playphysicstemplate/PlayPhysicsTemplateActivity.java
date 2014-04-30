@@ -28,12 +28,20 @@ import org.andengine.entity.scene.background.Background;
 import org.andengine.extension.debugdraw.DebugRenderer;
 import org.andengine.extension.physics.box2d.FixedStepPhysicsWorld;
 import org.andengine.extension.physics.box2d.PhysicsWorld;
+import org.andengine.extension.physics.box2d.util.Vector2Pool;
+import org.andengine.input.sensor.acceleration.AccelerationData;
+import org.andengine.input.sensor.acceleration.IAccelerationListener;
 import org.andengine.ui.activity.SimpleBaseGameActivity;
+import org.andengine.util.debug.Debug;
+
+import android.hardware.SensorManager;
 
 import com.badlogic.gdx.math.Vector2;
 
-public abstract class PlayPhysicsTemplateActivity extends SimpleBaseGameActivity {
+public abstract class PlayPhysicsTemplateActivity extends SimpleBaseGameActivity implements IAccelerationListener {
 
+	private static final String TAG = PlayPhysicsTemplateActivity.class.getSimpleName();
+	
 	protected static final int WIDTH = 800;
 	protected static final int HEIGHT = 480;
 	private static final int FPS = 60;
@@ -60,7 +68,7 @@ public abstract class PlayPhysicsTemplateActivity extends SimpleBaseGameActivity
 			_scene = new Scene();
 			_scene.setBackground(new Background(0f, 0f, 0f));
 			
-			_world = new FixedStepPhysicsWorld(FPS, new Vector2(0, -17), false);
+			_world = new FixedStepPhysicsWorld(FPS, new Vector2(0, SensorManager.GRAVITY_EARTH), false);
 			_scene.registerUpdateHandler(_world);
 			
 			setupYourPhysicsWorld(_world);
@@ -70,6 +78,36 @@ public abstract class PlayPhysicsTemplateActivity extends SimpleBaseGameActivity
 		}
 		
 		return _scene;
+	}
+	
+	@Override
+	protected synchronized void onResume() {
+		super.onResume();
+		
+		boolean result = enableAccelerationSensor(this);
+		if(!result) {
+			Debug.e(TAG, "Calling enableAccelerationSensor() has failed.");
+		}
+	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		
+		boolean result = disableAccelerationSensor();
+		if(!result) {
+			Debug.e(TAG, "Calling disableAccelerationSensor() has failed.");
+		}
+	}
+	
+	@Override
+	public void onAccelerationAccuracyChanged(AccelerationData pAccelerationData) {}
+	
+	@Override
+	public void onAccelerationChanged(AccelerationData pAccelerationData) {
+		final Vector2 gravity = Vector2Pool.obtain(pAccelerationData.getX(), pAccelerationData.getY());
+		_world.setGravity(gravity);
+		Vector2Pool.recycle(gravity);
 	}
 	
 	protected abstract void setupYourPhysicsWorld(PhysicsWorld world);
