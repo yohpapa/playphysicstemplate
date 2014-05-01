@@ -6,7 +6,7 @@ A template project for playing and enjoying physics world!
 
 1. Download [AndEngine](https://github.com/nicolasgramlich/AndEngine/tree/GLES2-AnchorCenter)
 1. Download [AndEnginePhysicsBox2DExtension](https://github.com/nicolasgramlich/AndEnginePhysicsBox2DExtension/tree/GLES2-AnchorCenter)
-1. Download [AndEngineDebugDrawExtension](https://github.com/nicolasgramlich/AndEnginePhysicsBox2DExtension/tree/GLES2-AnchorCenter)
+1. Download [AndEngineDebugDrawExtension](https://github.com/nazgee/AndEngineDebugDrawExtension/tree/GLES2-AnchorCenter)
 1. Of course download [me](https://github.com/yohpapa/playphysicstemplate) !
 
 Import all of the above projects to your Eclipse workspace.
